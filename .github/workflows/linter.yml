@@ -6,7 +6,8 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
+      - name: check-project
       - uses: actions/checkout@v2
         uses: actions/setup-node@v1
-      - name: check-project
+
         run: make lint
