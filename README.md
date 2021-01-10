@@ -12,6 +12,12 @@ Games:
 ```
 make install
 ```
+```
+make publish
+```
+```
+npm link
+```
 ## Usage example
 ```
 brain-even
