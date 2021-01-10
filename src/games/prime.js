@@ -3,31 +3,21 @@ import {
   setGamesLogic,
   getRandomNumber,
   maxCorrectAnsweCount,
+  isPrime,
 } from '../index.js';
 
-const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const questionText = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const setQuestion = (number) => `Question: ${number}`;
+const getQuestion = (number) => `Question: ${number}`;
 
-const getTrueAnswer = (number) => {
-  let isPrime = 'yes';
-
-  for (let index = 2; index < number; index += 1) {
-    if (number % index === 0) {
-      isPrime = 'no';
-      break;
-    }
-  }
-
-  return isPrime;
-};
-
-const setPairsFaq = () => {
+const getPairsColl = () => {
   const pairs = [];
 
   for (let index = 0; index < maxCorrectAnsweCount; index += 1) {
     const randomNumber = getRandomNumber(1, 1000);
-    const pair = cons(setQuestion(randomNumber), getTrueAnswer(randomNumber));
+    const trueAnswer = isPrime(randomNumber) ? 'yes' : 'no';
+    const question = getQuestion(randomNumber);
+    const pair = cons(question, trueAnswer);
     pairs.push(pair);
   }
 
@@ -35,8 +25,8 @@ const setPairsFaq = () => {
 };
 
 const startGame = () => {
-  const pairsColl = setPairsFaq();
-  setGamesLogic(question, pairsColl);
+  const pairsColl = getPairsColl();
+  setGamesLogic(questionText, pairsColl);
 };
 
 export default startGame;

@@ -5,7 +5,7 @@ import {
   maxCorrectAnsweCount,
 } from '../index.js';
 
-const question = 'What number is missing in the progression?';
+const questionText = 'What number is missing in the progression?';
 const separator = '..';
 
 const generateProgression = () => {
@@ -23,24 +23,27 @@ const generateProgression = () => {
   return progressionArr;
 };
 
-const hideProgressionElement = (arr) => {
-  const faq = {};
-  const newArr = arr;
-  const randomElement = getRandomNumber(1, arr.length - 1);
-  const hideNumber = newArr[randomElement];
-  newArr[randomElement] = separator;
-  faq.question = `Question: ${newArr.join(' ')}`;
-  faq.answer = String(hideNumber);
-  return faq;
+const hideProgressionElement = (arr, randomNumber) => {
+  const newArr = [...arr];
+  newArr[randomNumber] = separator;
+  return newArr;
 };
 
-const setPairsFaq = () => {
+const getQuestion = (arr) => {
+  const str = hideProgressionElement(arr).join(' ');
+  return `Question: ${str}`;
+};
+
+const getPairsColl = () => {
   const pairs = [];
 
   for (let index = 0; index < maxCorrectAnsweCount; index += 1) {
     const progression = generateProgression();
-    const pairsFaq = hideProgressionElement(progression);
-    const pair = cons(pairsFaq.question, pairsFaq.answer);
+    const randomNumber = getRandomNumber(1, progression.length - 1);
+    const arrWidthHideElement = hideProgressionElement(progression, randomNumber);
+    const trueAnswer = progression[randomNumber];
+    const question = getQuestion(arrWidthHideElement);
+    const pair = cons(question, trueAnswer);
     pairs.push(pair);
   }
 
@@ -48,8 +51,8 @@ const setPairsFaq = () => {
 };
 
 const startGame = () => {
-  const pairsColl = setPairsFaq();
-  setGamesLogic(question, pairsColl);
+  const pairsColl = getPairsColl();
+  setGamesLogic(questionText, pairsColl);
 };
 
 export default startGame;

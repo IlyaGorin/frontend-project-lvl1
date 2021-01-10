@@ -9,6 +9,20 @@ export const getRandomNumber = (min = 1, max = 100) => {
   return randomNumber;
 };
 
+export const isEven = (number) => number % 2 === 0;
+
+export const isPrime = (number) => {
+  let result = true;
+
+  for (let index = 2; index < number; index += 1) {
+    if (number % index === 0) {
+      result = false;
+    }
+  }
+
+  return result;
+};
+
 export const setGamesLogic = (question, pairs) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
@@ -19,7 +33,7 @@ export const setGamesLogic = (question, pairs) => {
   while (answerCount < maxCorrectAnsweCount) {
     console.log(car(pairs[answerCount]));
     const userAnswer = readlineSync.question('Your answer: ');
-    const trueAnswer = cdr(pairs[answerCount]);
+    const trueAnswer = String(cdr(pairs[answerCount]));
     if (userAnswer === trueAnswer) {
       console.log('Correct!');
       answerCount += 1;
