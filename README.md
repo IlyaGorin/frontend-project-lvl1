@@ -10,33 +10,33 @@ Games:
 
 ## Install
 ```
-make install
+$ make install
 ```
 ```
-make publish
+$ make publish
 ```
 ```
-npm link
+$ npm link
 ```
 ## Usage example
 ```
-brain-even
+$ brain-even
 ```
 [![asciicast](https://asciinema.org/a/380153.svg)](https://asciinema.org/a/380153)
 ```
-brain-calc
+$ brain-calc
 ```
 [![asciicast](https://asciinema.org/a/383693.svg)](https://asciinema.org/a/383693)
 ```
-brain-gcd
+$ brain-gcd
 ```
 [![asciicast](https://asciinema.org/a/383696.svg)](https://asciinema.org/a/383696)
 ```
-brain-progression
+$ brain-progression
 ```
 [![asciicast](https://asciinema.org/a/383699.svg)](https://asciinema.org/a/383699)
 ```
-brain-prime
+$ brain-prime
 ```
 [![asciicast](https://asciinema.org/a/383701.svg)](https://asciinema.org/a/383701)
 ### Hexlet tests and linter status:
