@@ -11,7 +11,7 @@ export const setGamesLogic = (question, pairs) => {
 
   let answerCount = 0;
   while (answerCount < maxCorrectAnswerCount) {
-    console.log(`Qustion: ${car(pairs[answerCount])}`);
+    console.log(`Question: ${car(pairs[answerCount])}`);
     const userAnswer = readlineSync.question('Your answer: ');
     const trueAnswer = String(cdr(pairs[answerCount]));
     if (userAnswer === trueAnswer) {
