@@ -1,27 +1,7 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
-export const maxCorrectAnsweCount = 3;
-
-export const getRandomNumber = (min = 1, max = 100) => {
-  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  return randomNumber;
-};
-
-export const isEven = (number) => number % 2 === 0;
-
-export const isPrime = (number) => {
-  let result = true;
-
-  for (let index = 2; index < number; index += 1) {
-    if (number % index === 0) {
-      result = false;
-    }
-  }
-
-  return result;
-};
+export const maxCorrectAnswerCount = 3;
 
 export const setGamesLogic = (question, pairs) => {
   console.log('Welcome to the Brain Games!');
@@ -30,8 +10,8 @@ export const setGamesLogic = (question, pairs) => {
   console.log(question);
 
   let answerCount = 0;
-  while (answerCount < maxCorrectAnsweCount) {
-    console.log(car(pairs[answerCount]));
+  while (answerCount < maxCorrectAnswerCount) {
+    console.log(`Qustion: ${car(pairs[answerCount])}`);
     const userAnswer = readlineSync.question('Your answer: ');
     const trueAnswer = String(cdr(pairs[answerCount]));
     if (userAnswer === trueAnswer) {
@@ -45,7 +25,7 @@ export const setGamesLogic = (question, pairs) => {
     }
   }
 
-  if (answerCount === maxCorrectAnsweCount) {
+  if (answerCount === maxCorrectAnswerCount) {
     console.log(`Congratulations, ${userName}!`);
   }
 };

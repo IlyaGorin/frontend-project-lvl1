@@ -1,32 +1,31 @@
 import { cons } from '@hexlet/pairs';
+import getRandomNumber from '../utils.js';
 import {
   setGamesLogic,
-  getRandomNumber,
-  maxCorrectAnsweCount,
-  isEven,
+  maxCorrectAnswerCount,
 } from '../index.js';
 
 const questionText = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getQuestion = (number) => `Question: ${number}`;
+export const isEven = (number) => number % 2 === 0;
 
-const getPairsColl = () => {
-  const pairs = [];
+const getPairs = () => {
+  const pairsCollection = [];
 
-  for (let index = 0; index < maxCorrectAnsweCount; index += 1) {
+  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
     const randomNumber = getRandomNumber();
-    const trueAnswer = isEven(randomNumber) ? 'yes' : 'no';
-    const question = getQuestion(randomNumber);
-    const pair = cons(question, trueAnswer);
-    pairs.push(pair);
+    const answer = isEven(randomNumber) ? 'yes' : 'no';
+    const question = randomNumber;
+    const pair = cons(question, answer);
+    pairsCollection.push(pair);
   }
 
-  return pairs;
+  return pairsCollection;
 };
 
 const startGame = () => {
-  const pairsColl = getPairsColl();
-  setGamesLogic(questionText, pairsColl);
+  const pairs = getPairs();
+  setGamesLogic(questionText, pairs);
 };
 
 export default startGame;

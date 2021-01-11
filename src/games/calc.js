@@ -1,13 +1,13 @@
 import { cons } from '@hexlet/pairs';
+import getRandomNumber from '../utils.js';
 import {
   setGamesLogic,
-  getRandomNumber,
-  maxCorrectAnsweCount,
+  maxCorrectAnswerCount,
 } from '../index.js';
 
 const operators = ['+', '-', '*'];
 const questionText = 'What is the result of the expression?';
-const getQuestion = (number1, number2, operator) => `Question: ${number1} ${operator} ${number2}`;
+const getQuestion = (number1, number2, operator) => `${number1} ${operator} ${number2}`;
 
 const getMathResult = (number1, number2, operator) => {
   let result = '';
@@ -29,25 +29,25 @@ const getMathResult = (number1, number2, operator) => {
   return result;
 };
 
-const getPairsColl = () => {
-  const pairs = [];
+const getPairs = () => {
+  const pairsCollection = [];
 
-  for (let index = 0; index < maxCorrectAnsweCount; index += 1) {
+  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
     const randomNumber1 = getRandomNumber();
     const randomNumber2 = getRandomNumber();
     const randomOperator = getRandomNumber(0, operators.length - 1);
     const question = getQuestion(randomNumber1, randomNumber2, operators[randomOperator]);
-    const trueAnswer = getMathResult(randomNumber1, randomNumber2, operators[randomOperator]);
-    const pair = cons(question, trueAnswer);
-    pairs.push(pair);
+    const answer = getMathResult(randomNumber1, randomNumber2, operators[randomOperator]);
+    const pair = cons(question, answer);
+    pairsCollection.push(pair);
   }
 
-  return pairs;
+  return pairsCollection;
 };
 
 const startGame = () => {
-  const pairsColl = getPairsColl();
-  setGamesLogic(questionText, pairsColl);
+  const pairs = getPairs();
+  setGamesLogic(questionText, pairs);
 };
 
 export default startGame;

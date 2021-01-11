@@ -1,12 +1,12 @@
 import { cons } from '@hexlet/pairs';
+import getRandomNumber from '../utils.js';
 import {
   setGamesLogic,
-  getRandomNumber,
-  maxCorrectAnsweCount,
+  maxCorrectAnswerCount,
 } from '../index.js';
 
 const questionText = 'Find the greatest common divisor of given numbers.';
-const getQuestion = (number1, number2) => `Question: ${number1} ${number2}`;
+const getQuestion = (number1, number2) => `${number1} ${number2}`;
 const getGCD = (number1, number2) => {
   if (!number2) {
     return number1;
@@ -15,24 +15,24 @@ const getGCD = (number1, number2) => {
   return getGCD(number2, number1 % number2);
 };
 
-const getPairsColl = () => {
-  const pairs = [];
+const getPairs = () => {
+  const pairsCollection = [];
 
-  for (let index = 0; index < maxCorrectAnsweCount; index += 1) {
+  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
     const randomNumber1 = getRandomNumber();
     const randomNumber2 = getRandomNumber();
     const question = getQuestion(randomNumber1, randomNumber2);
-    const trueAnswer = getGCD(randomNumber1, randomNumber2);
-    const pair = cons(question, trueAnswer);
-    pairs.push(pair);
+    const answer = getGCD(randomNumber1, randomNumber2);
+    const pair = cons(question, answer);
+    pairsCollection.push(pair);
   }
 
-  return pairs;
+  return pairsCollection;
 };
 
 const startGame = () => {
-  const pairsColl = getPairsColl();
-  setGamesLogic(questionText, pairsColl);
+  const pairs = getPairs();
+  setGamesLogic(questionText, pairs);
 };
 
 export default startGame;

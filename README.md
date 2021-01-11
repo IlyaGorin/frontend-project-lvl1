@@ -1,3 +1,7 @@
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/IlyaGorin/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/IlyaGorin/frontend-project-lvl1/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1c68fe509832cc3eacc0/maintainability)](https://codeclimate.com/github/IlyaGorin/frontend-project-lvl1/maintainability)
+[![Actions Status](https://github.com/IlyaGorin/frontend-project-lvl1/workflows/linter/badge.svg)](https://github.com/IlyaGorin/frontend-project-lvl1/actions)
 # Brain games
 "Brain games" is a set of five console games
 Each game asks questions that need to be answered correctly. After three correct answers, the game is considered to be completed. Wrong answers end the game and offer to play it again.  
@@ -39,7 +43,3 @@ $ brain-progression
 $ brain-prime
 ```
 [![asciicast](https://asciinema.org/a/383701.svg)](https://asciinema.org/a/383701)
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/IlyaGorin/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/IlyaGorin/frontend-project-lvl1/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/1c68fe509832cc3eacc0/maintainability)](https://codeclimate.com/github/IlyaGorin/frontend-project-lvl1/maintainability)
-[![Actions Status](https://github.com/IlyaGorin/frontend-project-lvl1/workflows/linter/badge.svg)](https://github.com/IlyaGorin/frontend-project-lvl1/actions)

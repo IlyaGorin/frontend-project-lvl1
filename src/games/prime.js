@@ -1,32 +1,41 @@
 import { cons } from '@hexlet/pairs';
+import getRandomNumber from '../utils.js';
 import {
   setGamesLogic,
-  getRandomNumber,
-  maxCorrectAnsweCount,
-  isPrime,
+  maxCorrectAnswerCount,
 } from '../index.js';
 
 const questionText = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const getQuestion = (number) => `Question: ${number}`;
+const isPrime = (number) => {
+  let result = true;
 
-const getPairsColl = () => {
-  const pairs = [];
-
-  for (let index = 0; index < maxCorrectAnsweCount; index += 1) {
-    const randomNumber = getRandomNumber(1, 1000);
-    const trueAnswer = isPrime(randomNumber) ? 'yes' : 'no';
-    const question = getQuestion(randomNumber);
-    const pair = cons(question, trueAnswer);
-    pairs.push(pair);
+  for (let index = 2; index < number; index += 1) {
+    if (number % index === 0) {
+      result = false;
+    }
   }
 
-  return pairs;
+  return result;
+};
+
+const getPairs = () => {
+  const pairsCollection = [];
+
+  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
+    const randomNumber = getRandomNumber(1, 1000);
+    const answer = isPrime(randomNumber) ? 'yes' : 'no';
+    const question = randomNumber;
+    const pair = cons(question, answer);
+    pairsCollection.push(pair);
+  }
+
+  return pairsCollection;
 };
 
 const startGame = () => {
-  const pairsColl = getPairsColl();
-  setGamesLogic(questionText, pairsColl);
+  const pairs = getPairs();
+  setGamesLogic(questionText, pairs);
 };
 
 export default startGame;
