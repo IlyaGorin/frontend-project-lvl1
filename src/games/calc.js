@@ -14,13 +14,13 @@ const getMathResult = (number1, number2, operator) => {
 
   switch (operator) {
     case '+':
-      result = String(number1 + number2);
+      result = number1 + number2;
       break;
     case '-':
-      result = String(number1 - number2);
+      result = number1 - number2;
       break;
     case '*':
-      result = String(number1 * number2);
+      result = number1 * number2;
       break;
     default:
       break;
@@ -37,7 +37,7 @@ const getPairs = () => {
     const randomNumber2 = getRandomNumber();
     const randomOperator = getRandomNumber(0, operators.length - 1);
     const question = getQuestion(randomNumber1, randomNumber2, operators[randomOperator]);
-    const answer = getMathResult(randomNumber1, randomNumber2, operators[randomOperator]);
+    const answer = String(getMathResult(randomNumber1, randomNumber2, operators[randomOperator]));
     const pair = cons(question, answer);
     pairsCollection.push(pair);
   }
