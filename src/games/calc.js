@@ -6,7 +6,7 @@ import {
 } from '../index.js';
 
 const operators = ['+', '-', '*'];
-const questionText = 'What is the result of the expression?';
+const gameDescription = 'What is the result of the expression?';
 const getQuestion = (number1, number2, operator) => `${number1} ${operator} ${number2}`;
 
 const getMathResult = (number1, number2, operator) => {
@@ -47,7 +47,7 @@ const getPairs = () => {
 
 const startGame = () => {
   const pairs = getPairs();
-  setGamesLogic(questionText, pairs);
+  setGamesLogic(gameDescription, pairs);
 };
 
 export default startGame;

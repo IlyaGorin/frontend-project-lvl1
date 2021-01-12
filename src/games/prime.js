@@ -5,7 +5,7 @@ import {
   maxCorrectAnswerCount,
 } from '../index.js';
 
-const questionText = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
   let result = true;
@@ -35,7 +35,7 @@ const getPairs = () => {
 
 const startGame = () => {
   const pairs = getPairs();
-  setGamesLogic(questionText, pairs);
+  setGamesLogic(gameDescription, pairs);
 };
 
 export default startGame;

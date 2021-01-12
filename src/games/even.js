@@ -5,7 +5,7 @@ import {
   maxCorrectAnswerCount,
 } from '../index.js';
 
-const questionText = 'Answer "yes" if the number is even, otherwise answer "no".';
+const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 export const isEven = (number) => number % 2 === 0;
 
@@ -25,7 +25,7 @@ const getPairs = () => {
 
 const startGame = () => {
   const pairs = getPairs();
-  setGamesLogic(questionText, pairs);
+  setGamesLogic(gameDescription, pairs);
 };
 
 export default startGame;

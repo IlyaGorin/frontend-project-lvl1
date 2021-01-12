@@ -5,7 +5,7 @@ import {
   maxCorrectAnswerCount,
 } from '../index.js';
 
-const questionText = 'What number is missing in the progression?';
+const gameDescription = 'What number is missing in the progression?';
 const separator = '..';
 
 const generateProgression = () => {
@@ -13,11 +13,11 @@ const generateProgression = () => {
   const progressionLength = getRandomNumber(5, 15);
   const progressionStep = getRandomNumber(2, 7);
   const progression = [];
-  let startNumber = progressionStart;
+  let currentNumber = progressionStart;
 
   for (let index = 0; index < progressionLength; index += 1) {
-    progression.push(startNumber);
-    startNumber += progressionStep;
+    progression.push(currentNumber);
+    currentNumber += progressionStep;
   }
 
   return progression;
@@ -40,9 +40,9 @@ const getPairs = () => {
   for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
     const progression = generateProgression();
     const randomNumber = getRandomNumber(1, progression.length - 1);
-    const progressionWidthHideElement = hideProgressionElement(progression, randomNumber);
-    const answer = progression[randomNumber];
-    const question = getQuestion(progressionWidthHideElement);
+    const progressionWithHideElement = hideProgressionElement(progression, randomNumber);
+    const answer = String(progression[randomNumber]);
+    const question = getQuestion(progressionWithHideElement);
     const pair = cons(question, answer);
     pairsCollection.push(pair);
   }
@@ -52,7 +52,7 @@ const getPairs = () => {
 
 const startGame = () => {
   const pairs = getPairs();
-  setGamesLogic(questionText, pairs);
+  setGamesLogic(gameDescription, pairs);
 };
 
 export default startGame;

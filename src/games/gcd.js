@@ -5,7 +5,7 @@ import {
   maxCorrectAnswerCount,
 } from '../index.js';
 
-const questionText = 'Find the greatest common divisor of given numbers.';
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 const getQuestion = (number1, number2) => `${number1} ${number2}`;
 const getGCD = (number1, number2) => {
   if (!number2) {
@@ -22,7 +22,7 @@ const getPairs = () => {
     const randomNumber1 = getRandomNumber();
     const randomNumber2 = getRandomNumber();
     const question = getQuestion(randomNumber1, randomNumber2);
-    const answer = getGCD(randomNumber1, randomNumber2);
+    const answer = String(getGCD(randomNumber1, randomNumber2));
     const pair = cons(question, answer);
     pairsCollection.push(pair);
   }
@@ -32,7 +32,7 @@ const getPairs = () => {
 
 const startGame = () => {
   const pairs = getPairs();
-  setGamesLogic(questionText, pairs);
+  setGamesLogic(gameDescription, pairs);
 };
 
 export default startGame;
