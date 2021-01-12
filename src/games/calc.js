@@ -10,7 +10,7 @@ const gameDescription = 'What is the result of the expression?';
 const getQuestion = (number1, number2, operator) => `${number1} ${operator} ${number2}`;
 
 const getMathResult = (number1, number2, operator) => {
-  let result = '';
+  let result = 0;
 
   switch (operator) {
     case '+':
