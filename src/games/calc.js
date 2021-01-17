@@ -35,7 +35,7 @@ const generateRounds = () => {
     const randomNumber1 = getRandomNumber();
     const randomNumber2 = getRandomNumber();
     const randomOperator = getRandomNumber(0, operators.length - 1);
-    const question = `${randomNumber1} ${randomNumber2} ${operators[randomOperator]}`;
+    const question = `${randomNumber1} ${operators[randomOperator]} ${randomNumber2}`;
     const answer = String(getMathResult(randomNumber1, randomNumber2, operators[randomOperator]));
     const round = cons(question, answer);
     rounds.push(round);
