@@ -1,16 +1,15 @@
 import { cons } from '@hexlet/pairs';
 import getRandomNumber from '../utils.js';
 import {
-  setGamesLogic,
-  maxCorrectAnswerCount,
+  maxCorrectAnswersCount,
+  playGame,
 } from '../index.js';
 
 const operators = ['+', '-', '*'];
 const gameDescription = 'What is the result of the expression?';
-const getQuestion = (number1, number2, operator) => `${number1} ${operator} ${number2}`;
 
 const getMathResult = (number1, number2, operator) => {
-  let result = 0;
+  let result;
 
   switch (operator) {
     case '+':
@@ -29,25 +28,25 @@ const getMathResult = (number1, number2, operator) => {
   return result;
 };
 
-const getPairs = () => {
-  const pairsCollection = [];
+const generateRounds = () => {
+  const rounds = [];
 
-  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
+  for (let index = 0; index < maxCorrectAnswersCount; index += 1) {
     const randomNumber1 = getRandomNumber();
     const randomNumber2 = getRandomNumber();
     const randomOperator = getRandomNumber(0, operators.length - 1);
-    const question = getQuestion(randomNumber1, randomNumber2, operators[randomOperator]);
+    const question = `${randomNumber1} ${randomNumber2} ${operators[randomOperator]}`;
     const answer = String(getMathResult(randomNumber1, randomNumber2, operators[randomOperator]));
-    const pair = cons(question, answer);
-    pairsCollection.push(pair);
+    const round = cons(question, answer);
+    rounds.push(round);
   }
 
-  return pairsCollection;
+  return rounds;
 };
 
 const startGame = () => {
-  const pairs = getPairs();
-  setGamesLogic(gameDescription, pairs);
+  const gameRounds = generateRounds();
+  playGame(gameDescription, gameRounds);
 };
 
 export default startGame;

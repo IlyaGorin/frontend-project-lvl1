@@ -1,41 +1,43 @@
 import { cons } from '@hexlet/pairs';
 import getRandomNumber from '../utils.js';
 import {
-  setGamesLogic,
-  maxCorrectAnswerCount,
+  maxCorrectAnswersCount,
+  playGame,
 } from '../index.js';
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
-  let result = true;
+  if (number < 2) {
+    return false;
+  }
 
   for (let index = 2; index < number; index += 1) {
     if (number % index === 0) {
-      result = false;
+      return false;
     }
   }
 
-  return result;
+  return true;
 };
 
-const getPairs = () => {
-  const pairsCollection = [];
+const generateRounds = () => {
+  const rounds = [];
 
-  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
+  for (let index = 0; index < maxCorrectAnswersCount; index += 1) {
     const randomNumber = getRandomNumber(1, 1000);
     const answer = isPrime(randomNumber) ? 'yes' : 'no';
     const question = randomNumber;
-    const pair = cons(question, answer);
-    pairsCollection.push(pair);
+    const round = cons(question, answer);
+    rounds.push(round);
   }
 
-  return pairsCollection;
+  return rounds;
 };
 
 const startGame = () => {
-  const pairs = getPairs();
-  setGamesLogic(gameDescription, pairs);
+  const gameRounds = generateRounds();
+  playGame(gameDescription, gameRounds);
 };
 
 export default startGame;

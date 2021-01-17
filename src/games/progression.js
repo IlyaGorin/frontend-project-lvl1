@@ -1,31 +1,28 @@
 import { cons } from '@hexlet/pairs';
 import getRandomNumber from '../utils.js';
 import {
-  setGamesLogic,
-  maxCorrectAnswerCount,
+  maxCorrectAnswersCount,
+  playGame,
 } from '../index.js';
 
 const gameDescription = 'What number is missing in the progression?';
 const separator = '..';
 
-const generateProgression = () => {
-  const progressionStart = getRandomNumber(1, 10);
-  const progressionLength = getRandomNumber(5, 15);
-  const progressionStep = getRandomNumber(2, 7);
+const generateProgression = (start, length, step) => {
   const progression = [];
-  let currentNumber = progressionStart;
+  let currentNumber = start;
 
-  for (let index = 0; index < progressionLength; index += 1) {
+  for (let index = 0; index < length; index += 1) {
     progression.push(currentNumber);
-    currentNumber += progressionStep;
+    currentNumber += step;
   }
 
   return progression;
 };
 
-const hideProgressionElement = (progression, randomNumber) => {
+const hideProgressionElement = (progression, number) => {
   const progressionCopy = [...progression];
-  progressionCopy[randomNumber] = separator;
+  progressionCopy[number] = separator;
   return progressionCopy;
 };
 
@@ -34,25 +31,28 @@ const getQuestion = (progression) => {
   return progressionToString;
 };
 
-const getPairs = () => {
-  const pairsCollection = [];
+const generateRounds = () => {
+  const rounds = [];
 
-  for (let index = 0; index < maxCorrectAnswerCount; index += 1) {
-    const progression = generateProgression();
+  for (let index = 0; index < maxCorrectAnswersCount; index += 1) {
+    const progressionStart = getRandomNumber(1, 10);
+    const progressionLength = getRandomNumber(5, 15);
+    const progressionStep = getRandomNumber(2, 7);
+    const progression = generateProgression(progressionStart, progressionLength, progressionStep);
     const randomNumber = getRandomNumber(1, progression.length - 1);
     const progressionWithHideElement = hideProgressionElement(progression, randomNumber);
     const answer = String(progression[randomNumber]);
     const question = getQuestion(progressionWithHideElement);
-    const pair = cons(question, answer);
-    pairsCollection.push(pair);
+    const round = cons(question, answer);
+    rounds.push(round);
   }
 
-  return pairsCollection;
+  return rounds;
 };
 
 const startGame = () => {
-  const pairs = getPairs();
-  setGamesLogic(gameDescription, pairs);
+  const gameRounds = generateRounds();
+  playGame(gameDescription, gameRounds);
 };
 
 export default startGame;
