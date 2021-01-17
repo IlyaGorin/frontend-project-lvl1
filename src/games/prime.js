@@ -27,6 +27,7 @@ const generateRounds = () => {
   for (let index = 0; index < maxCorrectAnswersCount; index += 1) {
     const randomNumber = getRandomNumber(1, 1000);
     const answer = isPrime(randomNumber) ? 'yes' : 'no';
+    console.log(answer);
     const question = randomNumber;
     const round = cons(question, answer);
     rounds.push(round);
