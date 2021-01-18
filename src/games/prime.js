@@ -12,7 +12,7 @@ const isPrime = (number) => {
     return false;
   }
 
-  for (let index = 2; index < ; index += 1) {
+  for (let index = 2; index < Math.sqrt(number); index += 1) {
     if (number % index === 0) {
       return false;
     }
