@@ -22,7 +22,7 @@ const getMathResult = (number1, number2, operator) => {
       result = number1 * number2;
       break;
     default:
-      break;
+      throw new Error(`Unknown operator '${operator}'!`);
   }
 
   return result;
